@@ -1,0 +1,283 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "URL Shortener API Documentation",
+        "description": "Here you will find the available actions from the API",
+        "contact": {
+            "email": "lukaz3nole@yahoo.com.ar"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/{code}": {
+            "get": {
+                "tags": [
+                    "Available actions"
+                ],
+                "summary": "Get a shortened URL",
+                "operationId": "68b4081e3d387108fe43e37e5b1f8dce",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "The code of the shortened URL",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "URL was found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "URL was found"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 7
+                                                },
+                                                "code": {
+                                                    "type": "string",
+                                                    "example": "zAWNGoNq"
+                                                },
+                                                "original_url": {
+                                                    "type": "string",
+                                                    "example": "https://www.example.com/some/really/long/path"
+                                                },
+                                                "shortened_url": {
+                                                    "type": "string",
+                                                    "example": "https://www.example.com/zAWNGoNq"
+                                                },
+                                                "user_identifier": {
+                                                    "type": "string",
+                                                    "example": "5564dbcb-f26b-4733-a459-d0ef66e34769"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-31T21:32:39.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-31T21:32:39.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Available actions"
+                ],
+                "summary": "Delete a shortened URL",
+                "operationId": "a906e9111bf2781ef17945820ab6ac25",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "The code of the shortened URL",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "URL deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "URL deleted successfully."
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {}
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/list": {
+            "get": {
+                "tags": [
+                    "Available actions"
+                ],
+                "summary": "Get the list of URLs for the current user",
+                "operationId": "b6629671e6455e86f305d3c51c7b4a04",
+                "parameters": [
+                    {
+                        "name": "user_identifier",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "5564dbcb-f26b-4733-a459-d0ef66e34769"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "URLs retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "URLs retrieved successfully"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "urls": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 2
+                                                            },
+                                                            "code": {
+                                                                "type": "string",
+                                                                "example": "aHQk02dL"
+                                                            },
+                                                            "original_url": {
+                                                                "type": "string",
+                                                                "example": "https://www.manznas.com/las/verdes/son/para/cocinar"
+                                                            },
+                                                            "shortened_url": {
+                                                                "type": "string",
+                                                                "example": "https://www.manznas.com/aHQk02dL"
+                                                            },
+                                                            "user_identifier": {
+                                                                "type": "string",
+                                                                "example": "5564dbcb-f26b-4733-a459-d0ef66e34769"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2024-08-31T18:08:33.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "format": "date-time",
+                                                                "example": "2024-08-31T18:08:33.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/shorten": {
+            "post": {
+                "tags": [
+                    "Available actions"
+                ],
+                "summary": "Shorten a URL",
+                "operationId": "9d0cd27b222c3ffd162fed705e695474",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "original_url",
+                                    "user_identifier"
+                                ],
+                                "properties": {
+                                    "original_url": {
+                                        "description": "The original URL to be shortened",
+                                        "type": "string",
+                                        "example": "https://example.com/some/long/path"
+                                    },
+                                    "user_identifier": {
+                                        "description": "The identifier of the user",
+                                        "type": "string",
+                                        "example": "5564dbcb-f26b-4733-a459-d0ef66e34769"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "URL successfully shortened",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "URL successfully shortened"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "shortened_url": {
+                                                    "type": "string",
+                                                    "example": "https://example.com/abcD1234"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Available actions",
+            "description": "Operations related to URL management"
+        }
+    ]
+}
