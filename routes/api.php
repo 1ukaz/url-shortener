@@ -19,9 +19,6 @@ use App\Http\Controllers\UrlDeleteController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 Route::get('/', UrlController::class);
 Route::post('/shorten', UrlShortenController::class);
 Route::get('/list', UrlListController::class);
