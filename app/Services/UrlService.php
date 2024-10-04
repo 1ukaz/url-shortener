@@ -62,7 +62,7 @@ class UrlService
         $host = $parsedUrl['scheme'] . '://' . $parsedUrl['host'];
 
         do {
-            // Gerenates the 8 characters hash for the path unitil it does no already exists
+            // Gerenates the 8 characters hash for the path until it does not already exist
             $shortenedPath = Str::random(8);
             $shortenedUrl = $host . '/' . $shortenedPath;
         } while ($this->urlRepository->findByCode($shortenedPath));
